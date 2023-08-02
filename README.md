@@ -15,22 +15,6 @@ Before you begin, make sure you have the following:
 - Maven installed
 - Docker installed
 
-## Repository: movies-app
-
-The `movies-app` repository contains a Java application developed with Java 17, JDBC Template, FlywayDB, and classes for
-configuring Unleash. It also uses an SDK specifically created for this project. To set up the `movies-app` repository,
-follow these steps:
-
-1. Clone the repository from the following link: [movies-app repository](https://github.com/fernando-dm/movies-app).
-2. Open a terminal or command prompt and navigate to the cloned repository's directory.
-3. Build the Maven wrapper by running the following command:
-
-   ```mvn -N wrapper:wrapper```
-
-4. Build and package the application by running the following command:
-
-   ```./mvnw clean package```
-
 ## FeatureToggleSdk Repository
 
 The `FeatureToggleSdk` repository contains an SDK developed in Java 8 that provides classes and configurations for using
@@ -42,21 +26,41 @@ these steps:
 2. Open a terminal or command prompt and navigate to the cloned repository's directory.
 3. Build and publish the SDK to the local Maven repository by running the following command:
 
-**dont forget to set java17 for running app-movies and set java8 for build sdk**
+**Don't forget to set java17 for running app-movies and set java8 for build sdk**
 
+If you have [sdk man](https://sdkman.io/):
 ```shell
-If you have sdk man:
-
-sdk use java 8.332.08.1
+sdk install java 8.0.382-amzn # optional step
+sdk use java 8.0.382-amzn
 ```
 
 ```shell
 gradle wrapper
+./gradlew clean build publishToMavenLocal --info
 ```
 
-```./gradlew clean build publishToMavenLocal --info```
-
 This command will create a JAR file in the local `.m2` repository.
+
+
+## Repository: movies-app
+
+The `movies-app` repository contains a Java application developed with Java 17, JDBC Template, FlywayDB, and classes for
+configuring Unleash. It also uses an SDK specifically created for this project. To set up the `movies-app` repository,
+follow these steps:
+
+1. Clone the repository from the following link: [movies-app repository](https://github.com/fernando-dm/movies-app).
+2. Open a terminal or command prompt and navigate to the cloned repository's directory.
+3. Build the Maven wrapper by running the following command:
+
+```shell
+mvn -N wrapper:wrapper
+```
+
+5. Build and package the application by running the following command:
+
+```shell
+./mvnw clean package
+```
 
 ## Configure Unleash
 
